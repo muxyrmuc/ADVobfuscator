@@ -169,7 +169,7 @@ inline void ObfuscatedCallP(F f, Args &&... args) {
 
 // Obfuscate the address of the target. Very simple implementation but enough to
 // annoy IDA and Co.
-template <typename F> struct ObfuscatedAddress {
+template <typename F> struct EngineImpl {
   // Pointer to a function
   using func_ptr_t = void (*)();
   // Integral type big enough (and not too big) to store a function pointer
@@ -179,15 +179,15 @@ template <typename F> struct ObfuscatedAddress {
   func_ptr_integral f_;
   int offset_;
 
-  constexpr ObfuscatedAddress(F f, int offset)
+  constexpr EngineImpl(F f, int offset)
       : f_{reinterpret_cast<func_ptr_integral>(f) + offset}, offset_{offset} {}
   constexpr F original() const { return reinterpret_cast<F>(f_ - offset_); }
 };
 
 // Create a instance of ObfuscatedFunc and deduce types
 template <typename F>
-constexpr ObfuscatedAddress<F> MakeObfuscatedAddress(F f, int offset) {
-  return ObfuscatedAddress<F>(f, offset);
+constexpr EngineImpl<F> MakeObfuscatedAddress(F f, int offset) {
+  return EngineImpl<F>(f, offset);
 }
 
 } // namespace capi_impl
