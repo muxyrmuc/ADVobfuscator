@@ -36,7 +36,7 @@
 #include "MetaString4.h"
 
 using namespace std;
-using namespace andrivet::ADVobfuscator;
+using namespace ADVobfuscator;
 
 // Demonstrate generation of Factorial at compile time
 void SampleFactorial()
