@@ -45,7 +45,7 @@
 // located. In production, it would be better to put it in the middle of the FSM
 // with some computing triggering it.
 
-namespace ADVobfuscator {
+namespace capi_impl {
 namespace Machine1 {
 
 // Finite State Machine
@@ -127,7 +127,7 @@ struct Machine : public msm::front::state_machine_def<Machine<E, R>> {
 };
 
 } // namespace Machine1
-} // namespace ADVobfuscator
+} // namespace capi_impl
 
 #pragma warning(push)
 #pragma warning(disable : 4068)
@@ -135,23 +135,23 @@ struct Machine : public msm::front::state_machine_def<Machine<E, R>> {
 #pragma clang diagnostic ignored "-Wgnu-zero-variadic-macro-arguments"
 
 #define OBFUSCATED_CALL0(f)                                                    \
-  ADVobfuscator::ObfuscatedCall<ADVobfuscator::Machine1::Machine>(             \
-      ADVobfuscator::MakeObfuscatedAddress(                                    \
-          f, ADVobfuscator::MetaRandom<__COUNTER__, 400>::value + 278))
+  capi_impl::ObfuscatedCall<capi_impl::Machine1::Machine>(                     \
+      capi_impl::MakeObfuscatedAddress(                                        \
+          f, capi_impl::MetaRandom<__COUNTER__, 400>::value + 278))
 #define OBFUSCATED_CALL_RET0(R, f)                                             \
-  ADVobfuscator::ObfuscatedCallRet<ADVobfuscator::Machine1::Machine, R>(       \
-      ADVobfuscator::MakeObfuscatedAddress(                                    \
-          f, ADVobfuscator::MetaRandom<__COUNTER__, 400>::value + 278))
+  capi_impl::ObfuscatedCallRet<capi_impl::Machine1::Machine, R>(               \
+      capi_impl::MakeObfuscatedAddress(                                        \
+          f, capi_impl::MetaRandom<__COUNTER__, 400>::value + 278))
 
 #define OBFUSCATED_CALL(f, ...)                                                \
-  ADVobfuscator::ObfuscatedCall<ADVobfuscator::Machine1::Machine>(             \
-      ADVobfuscator::MakeObfuscatedAddress(                                    \
-          f, ADVobfuscator::MetaRandom<__COUNTER__, 400>::value + 278),        \
+  capi_impl::ObfuscatedCall<capi_impl::Machine1::Machine>(                     \
+      capi_impl::MakeObfuscatedAddress(                                        \
+          f, capi_impl::MetaRandom<__COUNTER__, 400>::value + 278),            \
       __VA_ARGS__)
 #define OBFUSCATED_CALL_RET(R, f, ...)                                         \
-  ADVobfuscator::ObfuscatedCallRet<ADVobfuscator::Machine1::Machine, R>(       \
-      ADVobfuscator::MakeObfuscatedAddress(                                    \
-          f, ADVobfuscator::MetaRandom<__COUNTER__, 400>::value + 278),        \
+  capi_impl::ObfuscatedCallRet<capi_impl::Machine1::Machine, R>(               \
+      capi_impl::MakeObfuscatedAddress(                                        \
+          f, capi_impl::MetaRandom<__COUNTER__, 400>::value + 278),            \
       __VA_ARGS__)
 
 #pragma clang diagnostic pop

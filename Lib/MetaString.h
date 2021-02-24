@@ -41,7 +41,7 @@
 #include "Log.h"
 #include "MetaRandom.h"
 
-namespace ADVobfuscator {
+namespace capi_impl {
 
 // Represents an obfuscated string, parametrized with an alrorithm number N, a
 // list of indexes Indexes and a key Key
@@ -149,14 +149,13 @@ template <int N> struct MetaRandomChar {
       static_cast<char>(1 + MetaRandom<N, 0x7F - 1>::value);
 };
 
-} // namespace ADVobfuscator
+} // namespace capi_impl
 
 // Prefix notation
 #define DEF_OBFUSCATED(str)                                                    \
-  ADVobfuscator::MetaString<                                                   \
-      ADVobfuscator::MetaRandom<__COUNTER__, 3>::value,                        \
-      ADVobfuscator::MetaRandomChar<__COUNTER__>::value,                       \
-      ADVobfuscator::Make_Indexes<sizeof(str) - 1>::type>(str)
+  capi_impl::MetaString<capi_impl::MetaRandom<__COUNTER__, 3>::value,          \
+                        capi_impl::MetaRandomChar<__COUNTER__>::value,         \
+                        capi_impl::Make_Indexes<sizeof(str) - 1>::type>(str)
 
 #define OBFUSCATED(str) (DEF_OBFUSCATED(str).decrypt())
 

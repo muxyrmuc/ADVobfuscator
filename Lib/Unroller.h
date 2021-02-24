@@ -38,7 +38,7 @@
 
 // Unroll a loop
 
-namespace ADVobfuscator {
+namespace capi_impl {
 
 template <int N> struct Unroller {
   template <typename F, typename... Args>
@@ -57,6 +57,6 @@ template <> struct Unroller<1> {
   }
 };
 
-} // namespace ADVobfuscator
+} // namespace capi_impl
 
 #endif

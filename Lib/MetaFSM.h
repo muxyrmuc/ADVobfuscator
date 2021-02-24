@@ -58,7 +58,7 @@ namespace msm = boost::msm;
 namespace mpl = boost::mpl;
 using namespace boost::msm::front;
 
-namespace ADVobfuscator {
+namespace capi_impl {
 
 // Same as void but can be instantiated
 struct Void {};
@@ -190,6 +190,6 @@ constexpr ObfuscatedAddress<F> MakeObfuscatedAddress(F f, int offset) {
   return ObfuscatedAddress<F>(f, offset);
 }
 
-} // namespace ADVobfuscator
+} // namespace capi_impl
 
 #endif

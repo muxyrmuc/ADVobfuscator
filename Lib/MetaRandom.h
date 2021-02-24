@@ -43,7 +43,7 @@
 
 #include <random>
 
-namespace ADVobfuscator {
+namespace capi_impl {
 
 namespace {
 // I use current (compile time) as a seed
@@ -97,6 +97,6 @@ template <int N, int M> struct MetaRandom {
   static const int value = MetaRandomGenerator<N + 1>::value % M;
 };
 
-} // namespace ADVobfuscator
+} // namespace capi_impl
 
 #endif

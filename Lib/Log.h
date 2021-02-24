@@ -39,7 +39,7 @@
 #include <iomanip>
 #include <iostream> // [fokede] mingw compatibility
 
-namespace ADVobfuscator {
+namespace capi_impl {
 
 // Inspired from work of Martin Stettner and Jimmy J
 
@@ -56,7 +56,7 @@ inline std::ostream &operator<<(std::ostream &o, const HexChar &c) {
 
 inline HexChar hex(char c, int w = 2) { return HexChar(c, w); }
 
-} // namespace ADVobfuscator
+} // namespace capi_impl
 
 #if (defined(DEBUG) && DEBUG == 1) || (defined(ADVLOG) && ADVLOG == 1)
 #define LOG(str) std::cerr << str << std::endl
